@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>服务</title>
+    <link rel="stylesheet" href="{CSS_ADD}/index/bootstrap.css">
+    <link rel="stylesheet" href="{CSS_ADD}/index/project.css">
+    <link rel="stylesheet" href="{CSS_ADD}/index/index.css">
+    <style>
+        @keyframes banner {
+            from{
+                opacity: 0;
+            }
+            to{
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+{include file=$header}
+<div class="fubanner">
+    <div class="casebanner" style="background-image: url('http://localhost/2006/mvc/application/static/img/intro.jpg');">
+        <h2 style="animation-name: banner;animation-duration: 1s;">以客户为中心</h2>
+        <span></span>
+        <p style="animation-name: banner;animation-duration: 1s;">精益求精，让客户101%满意，让客户惊喜，让客户感动。</p>
+    </div>
+</div>
+<div class="con">
+    <div class="casecon">
+        <div class="con-title">
+            <h1>{$soninfo[0]['cname']}</h1>
+            <div class="con-h">
+                {$soninfo[0]['info']}
+            </div>
+        </div>
+        <div class="sear">
+            {foreach $coninfo[0] as $v}
+            <div class="col-md-3 col-sm-6 col-xs-12 box-list">
+                <div class="box-cont">
+                    <div class="box-icon1">
+                        <div style="margin: 0 auto ;width: 50px; height: 50px">
+                        <img src="{$v['imgurl']}" alt="">
+                        </div>
+                    </div>
+                    <div class="box-t1">{$v['ctitle']}</div>
+                    <div class="hr"></div>
+                    <div class="t3">
+                        {$v['cons']}
+                    </div>
+                </div>
+            </div>
+            {/foreach}
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<div class="con">
+    <div class="casecon">
+        <div class="con-title">
+            <h1>{$soninfo[1]['cname']}</h1>
+            <div class="con-h">
+                {$soninfo[1]['info']}
+            </div>
+        </div>
+        <div class="seravlist">
+            <ul>
+                {foreach $coninfo[1] as $k=>$v}
+                <li class="serve-item">
+                        <span>
+                            <img src="{$v['imgurl']}" alt="">
+                        </span>
+                    <div>
+                        <h1>{$v['ctitle']}</h1>
+                        <p>{$v['cons']}</p>
+                    </div>
+                </li>
+                {/foreach}
+                <div class="clear"></div>
+            </ul>
+
+        </div>
+    </div>
+</div>
+<div class="con fwlc" style="background-image: url('http://localhost/2006/mvc/application/static/img/b.jpg')">
+    <div class="casecon con-tit">
+        <div class="con-title">
+            <h1>{$soninfo[2]['cname']}</h1>
+            <div class="con-h">
+                {$soninfo[2]['info']}
+            </div>
+        </div>
+        <div class="sjlcon">
+            <ul>
+                {foreach $coninfo[2] as $k=>$v}
+                <li class="sjlcon-item">
+                    <div class="sj">
+                        <h2>{$v['ctitle']}</h2>
+                        {$v['cons']}
+<!--                        <h3>商务代表</h3>-->
+<!--                        <p>售前咨询</p>-->
+<!--                        <p>确认需求</p>-->
+<!--                        <p>签订合同</p>-->
+<!--                        <p>联络沟通</p>-->
+                    </div>
+                </li>
+                {/foreach}
+                <div class="clear"></div>
+            </ul>
+        </div>
+    </div>
+</div>
+{include file=$footer}
+<script src="./project.js"></script>
+</body>
+</html>

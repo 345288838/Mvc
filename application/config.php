@@ -1,0 +1,29 @@
+<?php
+return array(
+    "database"=>array(
+        "host"=>"localhost",
+        "username"=>"root",
+        "password"=>123456,
+        "dbname"=>"wuif2006",
+        "port"=>3308
+    ),
+    "smarty"=>array(
+        "templateDir"=>TPL_PATH,
+        "compileDir"=>COMP_PATH,
+        "cacheDir"=>CACHE_PATH,
+    ),
+    "code"=>array(
+        "type"=>"png",
+        "width"=>130,
+        "height"=>40.63,
+        "codeLen"=>4,
+        "seed"=>"abcdefhjkmnprstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ2345678",
+        "fontSize"=>array("min"=>20,"max"=>35),
+        "fontAngle"=> array("min"=>-15,"max"=>15),
+        "lineNum"=>array("min"=>1,"max"=>5),
+        "lineWidth"=>array("min"=>1,"max"=>4),
+        "pixNum"=>array("min"=>50,"max"=>80),
+        "fontFile"=>"D:\WampSever\www\\2006\mvc\application\static/font/demo.TTF",
+        "isCheck"=>true
+)
+);

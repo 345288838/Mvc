@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>方案</title>
+    <link rel="stylesheet" href="{BOOT_ADD}">
+    <link rel="stylesheet" href="{CSS_ADD}/index/project.css">
+</head>
+<body>
+{include file=$header}
+    <div class="fubanner">
+        <div class="casebanner" style="background-image: url('http://localhost/2006/mvc/application/static/img/intro.jpg');">
+            <h2>佳速全力以赴</h2>
+            <span></span>
+            <p>为您打造无与伦比的更靠谱的互联网开发解决方案</p>
+        </div>
+    </div>
+    <div class="con">
+        <div class="casecon">
+            <div class="con-title">
+                <h1>我们的解决方案</h1>
+                <div class="con-h">
+                    因为专注所以更专业，实现各行业定制化解决方案
+                </div>
+            </div>
+            <div class="sear">
+                <ul>
+                    {foreach $soninfo as $k=>$v}
+                    <li class="title">
+                        <a href="/2006/mvc/index.php/index/lists?cid={$v['cid']}">
+                            <div class="iconimg">
+                                <img src="{IMG_ADD}p{$k+1}.png" alt="">
+                            </div>
+                            <h2>{$v['cname']}</h2>
+                            <p>{$v['info']}</p>
+                        </a>
+                    </li>
+                    {/foreach}
+
+                    <div class="clear"></div>
+                </ul>
+            </div>
+        </div>
+    </div>
+{include file=$footer}
+    <script src="./project.js"></script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<?php
+if(!defined("MVC")){
+    die("非法入侵");
+}
+use \libs\smarty;
+use \libs\db;
+use libs\pages;
+class content{
+    function add(){
+        $smarty=new smarty();
+        $db = new db();
+        $db = $db->db;
+        $result = $db->query('select * from position');
+        $arr = array();
+        while ($row = $result->fetch_assoc()) {
+            $arr[]=$row;
+        }
+        $smarty->assign('data',$arr);
+        $smarty->display("admin/addcon.html");
+    }
+    function addcon(){
+        $cid=$_POST['cid'];
+        $ctitle=$_POST['ctitle'];
+        $cons=$_POST['cons'];
+        $imgurl=$_POST['imgurl'];
+        $info=$_POST['info'];
+        $posid=$_POST['posid'];
+        $posid=implode(",",$posid);
+        $database=new db();
+        $db=$database->db;
+        $db->query("insert into content (ctitle,cons,cid,imgurl,info,posid) VALUES ('$ctitle','$cons','$cid','$imgurl','$info','$posid')");
+        if ($db->affected_rows>0){
+            echo "<script>alert('添加成功');location.href='/2006/mvc/index.php/admin/content/add'</script>";
+        }else{
+            echo "<script>alert('添加失败');location.href='/2006/mvc/index.php/admin/content/add'</script>";
+        }
+    }
+    function showList(){
+        $database=new db();
+        $db=$database->db;
+
+        $sql="select * from content as con left join category as cat on con.cid=cat.cid where 1=1";
+        if (isset($_POST['cid'])&&!empty($_POST['cid'])){
+            $sql.=" and con.cid=".$_POST['cid'];
+        }
+
+        if (isset($_POST['ctitle'])&&!empty($_POST['ctitle'])){
+            $wordkey=$_POST['ctitle'];
+            $sql.=" and ctitle like '%".$wordkey."%'";
+        }
+
+        if (isset($_POST['order'])&&!empty($_POST['order'])){
+            $order=$_POST['order'];
+            $sql.=" order by conid ".$order;
+        }
+
+        $result=$db->query($sql);
+
+        $pages=new pages();
+        $pages->total= $result->num_rows;
+        $str=$pages->show();
+        $sql.=$pages->limit;
+        $result=$db->query($sql);
+
+
+        $arr=array();
+        while ($row=$result->fetch_assoc()){
+            $arr[]=$row;
+        }
+        $smarty=new smarty();
+        $smarty->assign("data",$arr);
+        $smarty->assign("str",$str);
+        $smarty->display("admin/showList.html");
+    }
+    function show(){
+        $conid=$_GET['conid'];
+        $database=new db();
+        $db=$database->db;
+        $result=$db->query('select * from content where conid='.$conid );
+        $row=$result->fetch_assoc();
+        $smarty=new smarty();
+        $smarty->assign("data",$row);
+        $smarty->display("admin/show.html");
+    }
+
+    function edit(){
+        $conid=$_GET['conid'];
+        $database=new db();
+        $db=$database->db;
+        $result=$db->query('select * from content where conid='.$conid );
+        $row=$result->fetch_assoc();
+        $smarty=new smarty();
+        $smarty->assign("data",$row);
+        $smarty->display("admin/editcon.html");
+    }
+
+    function editcon(){
+        $conid=$_POST['conid'];
+        $cid=$_POST['cid'];
+        $ctitle=$_POST['ctitle'];
+        $cons=$_POST['cons'];
+        $imgurl=$_POST['imgurl'];
+        $info=$_POST['info'];
+        $database=new db();
+        $db=$database->db;
+        $db->query("update content set ctitle='$ctitle',cons='$cons',cid=$cid,imgurl='$imgurl',info='$info' where conid=".$conid);
+        if($db->affected_rows>0){
+            echo "<script>alert('修改成功');location.href='/2006/mvc/index.php/admin/content/edit?conid={$conid}'</script>";
+        }else{
+            echo "<script>alert('修改失败');location.href='/2006/mvc/index.php/admin/content/edit?conid={$conid}'</script>";
+        }
+    }
+
+    function del(){
+        $conid=$_GET['conid'];
+        $database=new db();
+        $db=$database->db;
+        $db->query("delete from content where conid=".$conid);
+        if ($db->affected_rows>0){
+            echo "<script>alert('删除成功');location.href='/2006/mvc/index.php/admin/content/showList'</script>";
+        }else{
+            echo "<script>alert('删除失败');location.href='/2006/mvc/index.php/admin/content/showList'</script>";
+        }
+    }
+}

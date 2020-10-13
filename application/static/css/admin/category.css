@@ -1,0 +1,55 @@
+
+.pannel{
+    width: 50%;
+    height: 100%;
+    background: #fff;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 20px;
+    z-index: 1;
+    display: none;
+}
+.closed{
+    width: 30%;
+    height: 40px;
+    position: absolute;
+    left: 10%;
+    right: 0;
+    bottom: 5%;
+    opacity: 1;
+}
+.sele{
+    width: 50%;
+}
+.subbut{
+    display: block;
+    width: 30%;
+    height: 40px;
+    background: #5bc0de;
+    border: none;
+    border-radius: 5px;
+    float: left;
+    color: #fff;
+    position: absolute;
+    right: 10%;
+    bottom: 5%;
+    margin: 0;
+
+}
+ body{
+     margin: 0;
+     padding: 0;
+     background: rgba(255,255,255,0);
+ }
+.container{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.table>tbody>tr>td{
+    border: 1px solid #fff;
+    line-height: 30px;
+}

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{CSS_ADD}admin/bootstrap.css">
+    <link rel="stylesheet" href="{CSS_ADD}admin/category.css">
+</head>
+<body>
+<div class="container">
+    {if $data}
+    <table class='table table-bordered'>
+        {$data}
+    </table>
+    {else}
+    <table>
+        <tr>
+            <td>没有数据</td>
+        </tr>
+    </table>
+    {/if}
+</div>
+
+<div class="pannel addpanner ">
+
+    <input type="button" value="关闭" class="btn btn-info closed">
+    <form action="/2006/mvc/index.php/admin/category/add" method="post" class="form-horizontal"
+          style="width: 75%;margin: 20px auto">
+        <div class="sub">
+            <div class="form-group">
+                <label for="cname1">栏目名称</label>
+                <input type="text" name="cname" id="cname1" class=" form-control">
+            </div>
+            <input type="hidden" name="cid">
+            <div class="form-group">
+                <label for="isshow1">是否可见</label>
+                <select name="isshow" class="form-control" id="isshow1">
+                    <option value="1">在导航可见</option>
+                    <option value="0">在导航不可见</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="tpl_name1">模板名称</label>
+                <input type="text" name="tpl_name" placeholder="输入对应的模板"
+                       class="form-control" id="tpl_name1">
+            </div>
+
+            <div class="form-group">
+                <label for="info1">描述</label>
+                <textarea class="form-control" name="info" id="info1" rows="10"></textarea>
+            </div>
+        </div>
+        <input type="submit" value="提交" class="btn btn-info subbut">
+
+    </form>
+
+</div>
+
+<div class="pannel editpanner">
+    <input type="button" value="关闭" class="btn btn-info closed">
+    <form action="/2006/mvc/index.php/admin/category/add" method="post " class="form-horizontal editform"
+          style="width: 75%;margin: 20px auto">
+        <div class="form-group">
+            <label for="cname">栏目名称</label>
+            <input type="text" name="cname" id="cname" class=" form-control">
+        </div>
+        <input type="hidden" name="cid">
+
+        <div class="form-group">
+            <label for="opts">栏目级别</label>
+            <select name="pid" id="opts" class="form-control sele">
+
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="isshow">是否可见</label>
+            <select name="isshow" class="form-control" id="isshow">
+                <option value="1">在导航可见</option>
+                <option value="0">在导航不可见</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="editupload">文件上传</label>
+            <div class="editupload" id="editupload"></div>
+            <input type="hidden" name="imgurl">
+        </div>
+
+
+        <div class="form-group">
+            <label for="tpl_name">模板名称</label>
+            <input type="text" name="tpl_name" placeholder="输入对应的模板"
+                   class="form-control" id="tpl_name">
+        </div>
+
+        <div class="form-group">
+            <label for="info">描述</label>
+            <textarea class="form-control" name="info" id="info" rows="2"></textarea>
+        </div>
+
+        <input type="button" value="修改" class="btn btn-info subbut" id="edit">
+
+    </form>
+
+</div>
+
+<script src="{JS_ADD}jquery-3.5.1.js"></script>
+<script src="{JS_ADD}category.js"></script>
+<script src="{JS_ADD}upload.js"></script>
+<script>
+var upObj=new upload();
+upObj.createView({
+    parent:document.querySelector(".editupload")
+})
+upObj.selectBtn.style.lineHeight="30px";
+upObj.upBtn.style.lineHeight="30px"
+    upObj.up("/2006/mvc/index.php/admin/category/uploadfile",function (e) {
+        $("#imgurl").val(e[0]);
+    })
+</script>
+</body>
+</html>

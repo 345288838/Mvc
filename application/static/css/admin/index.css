@@ -1,0 +1,115 @@
+html,body{
+    width: 100%;
+    height: 100%;
+}
+body{
+    width: 100%;
+    height: 100%;
+    background: url("../../img/1.jpeg") no-repeat ;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    padding: 0;
+    margin: 0;
+}
+.head{
+    width: 100%;
+    height: 20%;
+    position: relative;
+}
+h1{
+    margin: 0;
+    padding: 0;
+
+}
+.head h1{
+    text-align: center;
+    padding-top: 60px;
+    color: #fff;
+}
+
+
+/*.header{*/
+/*    width: 100%;*/
+/*    height:20% ;*/
+/*}*/
+/*.header h1{*/
+/*    text-align: center;*/
+/*    padding-top: 50px;*/
+/*}*/
+.loginfo{
+    margin-top: 50px;
+    float: right;
+    margin-right: 30px;
+    color: #e5e5e5;
+}
+.loginfo a{
+    color:#e5e5e5;
+    text-decoration: none;
+}
+.loginfo span{
+    margin-right: 10px;
+}
+.main{
+    width: 100%;
+    height: 76%;
+    background-color: rgba(255,255,255,0.5);
+}
+.bottom{
+    text-align: center;
+    width: 100%;
+    height: 4%;
+    color: #e5e5e5;
+}
+.bottom span{
+    display: block;
+    padding-top: 10px;
+}
+.left{
+    width: 15%;
+    height: 100%;
+    float: left;
+    border-right: 1px solid #fff;
+    box-sizing: border-box;
+}
+.right{
+    width: 85%;
+    height: 100%;
+    float: left;
+}
+ul,li{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+iframe{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+.fList{
+    font-size: 18px;
+    letter-spacing: 2px;
+    text-align: center;
+    line-height: 50px;
+    width: 100%;
+    height: 50px;
+    background: rgba(255,255,255,0.3);
+    border-bottom: 1px solid #e5e5e5;
+}
+.sonList{
+    display: block;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 15px;
+    letter-spacing: 1px;
+    color: #fff;
+    border-bottom: 1px solid #e5e5e5;
+    box-sizing: border-box;
+}
+.sonList a{
+    color: #fff;
+    text-decoration: none;
+}

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    //通过js操作cookie
+
+    function setCookie(attr,val,second) {
+        var expires="";
+        if(second){
+            var data=new Date();
+            data.setTime(data.getTime()+1000*second);
+            data=data.toUTCString();
+            expires="expires="+data;
+        }
+        document.cookie=attr+"="+val+";"+expires;
+    }
+    function getCookie(attr) {
+        var cookies=document.cookie;
+        var arr=cookies.split(';');
+        for (var i in arr){
+            var arr1=arr[i].split('=');
+            if (arr1[0]==attr){
+                return arr1[1];
+            }
+        }
+    }
+    function delCookie(attr) {
+        var data=new Date();
+        data.setTime(data.getTime()-1000);
+        data=data.toUTCString();
+        expires="expires="+data;
+        document.cookie=attr+"=xx;"+expires;
+     }
+    // delCookie("code");
+    // setCookie("name","lisi",10);
+</script>
+</body>
+</html>

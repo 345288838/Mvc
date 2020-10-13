@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>addpage</title>
+    <link rel="stylesheet" href="{BOOT_ADD}">
+</head>
+<body style="background: none">
+<script src="{JS_ADD}upload.js"></script>
+<div class="container" style="padding: 3%">
+    <form action="/2006/mvc/index.php/admin/category/add" method="post" class="form-horizontal" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="cname">栏目名称</label>
+            <input type="text" placeholder="添加一级栏目" name="cname"
+                   class="form-control" id="cname">
+        </div>
+
+        <div class="form-group">
+            <label for="isshow">是否可见</label>
+            <select name="isshow" id="" class="form-control" id="isshow">
+                <option value="1">在导航可见</option>
+                <option value="0">在导航不可见</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="tpl_name">模板名称</label>
+            <input type="text" name="tpl_name" placeholder="输入对应的模板"
+                   class="form-control" id="tpl_name">
+        </div>
+
+        <div class="form-group">
+            <label for="upload">文件上传</label>
+            <div class="upload" id="upload"></div>
+            <input type="hidden" value="hidden" name="imgurl">
+        </div>
+
+        <div class="form-group">
+            <label for="info">描述</label>
+            <textarea class="form-control" name="info" id="info" rows="10"></textarea>
+        </div>
+
+
+
+        <div class="form-group">
+        <input type="submit" value="添加" class="btn btn-info">
+        </div>
+    </form>
+</div>
+<script src="{JS_ADD}jquery-3.5.1.js"></script>
+<script>
+    var uploadObj=new upload();
+    uploadObj.multiple=true;
+    uploadObj.createView({
+        parent:document.querySelector(".upload")
+    })
+    uploadObj.up("/2006/mvc/index.php/admin/category/uploadfile",function (e) {
+        $("input[type=hidden]").val(e[0]);
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{CSS_ADD}index/index.css">
+</head>
+<body>
+<div class="header">
+    <div class="logo">
+        <a href="#javascript">
+            <img src="{IMG_ADD}logo.png" alt="">
+        </a>
+        <h1>更高端的互联网开发服务商</h1>
+    </div>
+    <nav class="menu">
+        <ul class="list-inline">
+            <li class="item1">
+                <div class="before" ></div>
+                <a class="a1"  href="/2006/mvc/index.php">首页</a>
+            </li>
+            <ul class="subnav"></ul>
+            {foreach $menuData as $v}
+            <li class="item1">
+                <div class="before" ></div>
+                <a class="a1" href="/2006/mvc/index.php/index/category?cid={$v['cid']}" >{$v["cname"]}</a>
+                {if isset($v["child"])}
+                <ul class="subnav">
+                    {foreach $v["child"] as $v1}
+                    <li class="subnav-list">
+                        <a href="/2006/mvc/index.php/index/lists?cid={$v1['cid']}" title="">{$v1["cname"]}
+                            <i class="subnav-right">></i>
+                        </a>
+                    </li>
+                    {/foreach}
+                </ul>
+                {/if}
+            </li>
+            {/foreach}
+        </ul>
+    </nav>
+</div>
+<script>
+    var menuList=document.querySelectorAll(".item1");
+    var before=document.querySelectorAll('.before');
+    var subNav=document.querySelectorAll(".subnav");
+    for (let i=0;i<menuList.length;i++){
+        menuList[i].onmouseover=function () {
+            before[i].style.transform="scale(1,1)";
+        }
+        menuList[i].onmouseout=function () {
+            before[i].style.transform="scale(0,0)";
+        }
+    }
+</script>
+</body>
+</html>
